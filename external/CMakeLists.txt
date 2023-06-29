@@ -7,6 +7,7 @@ set(external_libs
     glm
     imgui
     ktx
+    stb
     tinygltf
 )
 

@@ -8,9 +8,9 @@
 
 #include <sstream>
 #include <iomanip>
-#include "vulkanexamplebase.h"
-#include "VulkanglTFModel.h"
-#include "../external/stb/stb_font_consolas_24_latin1.inl"
+#include "base/vulkanexamplebase.h"
+#include "base/VulkanglTFModel.h"
+#include "stb/stb_font_consolas_24_latin1.inl"
 
 #define ENABLE_VALIDATION false
 
@@ -802,8 +802,8 @@ public:
 		pipelineCI.pStages = shaderStages.data();
 		pipelineCI.pVertexInputState = vkglTF::Vertex::getPipelineVertexInputState({vkglTF::VertexComponent::Position, vkglTF::VertexComponent::Normal, vkglTF::VertexComponent::UV});
 
-		shaderStages[0] = loadShader(getShadersPath() + "textoverlay/mesh.vert.spv", VK_SHADER_STAGE_VERTEX_BIT);
-		shaderStages[1] = loadShader(getShadersPath() + "textoverlay/mesh.frag.spv", VK_SHADER_STAGE_FRAGMENT_BIT);
+		shaderStages[0] = loadShader("shaders/mesh.vert.spv", VK_SHADER_STAGE_VERTEX_BIT);
+		shaderStages[1] = loadShader("shaders/mesh.frag.spv", VK_SHADER_STAGE_FRAGMENT_BIT);
 		VK_CHECK_RESULT(vkCreateGraphicsPipelines(device, pipelineCache, 1, &pipelineCI, nullptr, &pipeline));
 	}
 
@@ -834,8 +834,8 @@ public:
 	{
 		// Load the text rendering shaders
 		std::vector<VkPipelineShaderStageCreateInfo> shaderStages;
-		shaderStages.push_back(loadShader(getShadersPath() + "textoverlay/text.vert.spv", VK_SHADER_STAGE_VERTEX_BIT));
-		shaderStages.push_back(loadShader(getShadersPath() + "textoverlay/text.frag.spv", VK_SHADER_STAGE_FRAGMENT_BIT));
+		shaderStages.push_back(loadShader("shaders/text.vert.spv", VK_SHADER_STAGE_VERTEX_BIT));
+		shaderStages.push_back(loadShader("shaders/text.frag.spv", VK_SHADER_STAGE_FRAGMENT_BIT));
 
 		textOverlay = new TextOverlay(
 			vulkanDevice,

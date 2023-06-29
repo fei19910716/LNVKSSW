@@ -10,7 +10,9 @@ if(BUILD_ALL_SAMPLES)
         endif()
     endforeach()
 else()
-    add_subdirectory(1.triangle)
-    add_subdirectory(2.texture)
+    # add_subdirectory(1.triangle)
+    # add_subdirectory(2.texture)
+
+    add_subdirectory(textoverlay)
 endif()
 
